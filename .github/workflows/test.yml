@@ -13,5 +13,7 @@ jobs:
         run: echo "file found"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: testy
+        run: echo "chicken"
 
   
