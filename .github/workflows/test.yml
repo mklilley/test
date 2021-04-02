@@ -4,12 +4,14 @@ on:
     types: [assigned]
 jobs:
   test-job:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v2
-      if: hashFiles(github.issue.title) != ''
-      run: echo "file found"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout-repo
+        uses: actions/checkout@v2
+      - name: check-file-exists
+        if: hashFiles(github.issue.title) != ''
+        run: echo "file found"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   
