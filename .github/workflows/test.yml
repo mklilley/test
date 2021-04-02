@@ -8,12 +8,14 @@ jobs:
     steps:
       - name: checkout-repo
         uses: actions/checkout@v2
+      - name: issue-title
+        run: | 
+          echo ${{github.issue.title}}
+          echo ${{hashFiles(github.issue.title)}}
       - name: check-file-exists
         if: hashFiles(github.issue.title) != ''
         run: echo "file found"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: testy
-        run: echo "chicken"
 
   
