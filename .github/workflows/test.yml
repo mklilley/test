@@ -1,0 +1,15 @@
+name: test-action
+on:
+  issues:
+    types: [assigned]
+jobs:
+  test-job:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+      if: hashFiles(github.issue.title) != ''
+      run: echo "file found"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  
